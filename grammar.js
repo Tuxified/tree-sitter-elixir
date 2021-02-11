@@ -384,7 +384,7 @@ module.exports = grammar({
       ),
 
     variable: ($) =>
-      /[_a-z\xC0-\xD6\xD8-\xDE\xDF-\xF6\xF8-\xFF][_a-zA-Z0-9\xC0-\xD6\xD8-\xDE]*/,
+      /[_a-z\xC0-\xD6\xD8-\xDE\xDF-\xF6\xF8-\xFF][_a-zA-Z0-9\xC0-\xD6\xD8-\xDE]*[?!]?/,
     identifier: ($) => /[a-z_]+/,
 
     _trailing_comma_separator_elements: ($) =>
