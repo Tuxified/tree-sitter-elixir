@@ -24,7 +24,7 @@ Tuple - Error
 
 ---
 
-(source_file (tuple (number) (ERROR (number))))
+(source_file (tuple (number) (ERROR)))
 
 ====================
 Tuple - Trailing Separator

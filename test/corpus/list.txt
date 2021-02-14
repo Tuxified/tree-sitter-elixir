@@ -34,7 +34,7 @@ List - Error
 
 ---
 
-(source_file  (list (number) (ERROR (number))))
+(source_file  (list (number) (ERROR)))
 
 ====================
 List - Trailing Separator

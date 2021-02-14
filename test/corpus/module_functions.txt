@@ -57,7 +57,7 @@ Module function with guard clause
 ============
 
 def test(first_name, last_name) when is_nil(first_name) do
-  "#{first_name} #{last_name}"
+  "a simpler test"
 end
 
 ---

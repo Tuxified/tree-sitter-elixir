@@ -1,0 +1,50 @@
+===========
+For - list generator
+===========
+
+for n <- [1, 2, 3, 4], do: n * n
+
+---
+
+(source_file (for_list_comprehension 
+  (for_list_generator 
+    (variable) 
+    (list (number) (number) (number) (number))) 
+  (do_block (expr_op (variable) (variable)))))
+
+===========
+For - bistring generator
+===========
+
+for <<r::8, g::8, b::8 <- <<213, 45, 132, 64, 76, 32, 76, 0, 0, 234, 32, 15>> >>, do: {r, g, b}
+---
+
+(source_file 
+  (for_list_comprehension 
+    (for_bitstring_generator (bin_part (variable) (bin_type_list (bin_type))) (bin_part (variable) (bin_type_list (bin_type))) (bin_part (variable) (bin_type_list (bin_type))) (binary_string (bin_part (number)) (bin_part (number)) (bin_part (number)) (bin_part (number)) (bin_part (number)) (bin_part (number)) (bin_part (number)) (bin_part (number)) (bin_part (number)) (bin_part (number)) (bin_part (number)) (bin_part (number)))) 
+    (do_block (tuple (variable) (variable) (variable)))))
+
+===========
+For - filter tuple
+===========
+
+for {:good, n} <- [good: 1, good: 2, bad: 3, good: 4], do: n
+
+---
+
+(source_file 
+  (for_list_comprehension
+    (for_list_generator (tuple (atom) (variable)) (keyword_list (keywordlist_entry (atom) (number)) (keywordlist_entry (atom) (number)) (keywordlist_entry (atom) (number)) (keywordlist_entry (atom) (number)))) 
+    (do_block (variable))))
+
+===========
+For - square list
+===========
+
+for n <- [ 1,  2,  3,  4], do: square(n)
+
+---
+
+(source_file (for_list_comprehension 
+  (for_list_generator (variable) (list (number) (number) (number) (number)))
+  (do_block (function_call (computed_function_name (variable)) (variable)))))

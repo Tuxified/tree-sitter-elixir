@@ -33,6 +33,17 @@ Hello
 (source_file (string))
 
 ============
+String - Concatenation
+============
+
+"left" <> "right"
+
+---
+
+(source_file
+  (expr_op (string) (string)))
+
+============
 String - Multi Line with internal double quotes
 ============
 
