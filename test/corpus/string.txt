@@ -1,5 +1,5 @@
 ============
-String
+String - Single line
 ============
 
 "1234Hello WOrld"
@@ -9,13 +9,38 @@ String
 (source_file (string))
 
 ============
-String Multi Line
+String - Single line with escaped double quote
+============
+
+"1234Hello \" WOrld"
+
+---
+
+(source_file (string))
+
+============
+String - Multi Line
 ============
 
 """
 Hello
 
  This is multi line.
+"""
+
+---
+
+(source_file (string))
+
+============
+String - Multi Line with internal double quotes
+============
+
+"""
+A multi line string:
+
+"A string which spans multiple lines,
+opened and closed by tripple double quotation marks (")"
 """
 
 ---
