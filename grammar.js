@@ -167,6 +167,12 @@ const singleLineString = seq('"', repeat(/./), '"');
 // TODO: unicode support.
 const multiLineString = seq('"""', repeat(choice(/./, /\n/)), '"""');
 
+// TODO: unicode support.
+const singleLineCharlist = seq("'", repeat(/./), "'");
+
+// TODO: unicode support.
+const multiLineCharlist = seq("'''", repeat(choice(/./, /\n/)), "'''");
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Precedences
@@ -260,6 +266,8 @@ module.exports = grammar({
         )
       ),
     alias: ($) => seq(/[A-Z]/, repeat(/[0-9a-zA-Z_.]/)),
+
+    charlist: ($) => token(choice(singleLineCharlist, multiLineCharlist)),
 
     string: ($) => token(choice(singleLineString, multiLineString)),
 
@@ -401,6 +409,7 @@ module.exports = grammar({
         $.number,
         $.atom,
         $.string,
+        $.charlist,
         $.binary_string,
         $.boolean,
         $.keyword_list,
