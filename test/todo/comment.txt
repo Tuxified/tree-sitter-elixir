@@ -61,9 +61,9 @@ Comment in nested structure
 
 (source_file
   (list
-    (integer)
+    (number)
     (comment)
     (tuple
-      (integer)
+      (number)
       (comment)
-      (integer))))
+      (number))))

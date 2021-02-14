@@ -1,0 +1,12 @@
+===========
+For - into map
+===========
+
+for {key, val} <- %{"a" => 1, "b" => 2}, into: %{}, do: {key, val * val}
+
+---
+
+(source_file (for_list_comprehension
+  (for_list_generator (tuple (variable) (variable)) (map (map_entry (string) (number)) (map_entry (string) (number))))
+  (for_list_into (map))
+  (do_block (tuple (variable) (expr_op (variable) (variable))))))

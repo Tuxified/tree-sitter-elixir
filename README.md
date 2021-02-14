@@ -80,7 +80,7 @@ Current status (not mentioned parts are not implemented):
 - [x] Atom - Unquoted
 - [x] Atom - Operator
 - [x] Atom - Quoted
-- [ ] Atom - Unicode support
+- [ ] Atom - Unicode support (depends on https://github.com/tree-sitter/tree-sitter/issues/95)
 
 ### sigil
 
@@ -101,8 +101,11 @@ Current status (not mentioned parts are not implemented):
 
 ### string
 
-- [x] String
-- [x] String Multi Line
+- [x] String - Single line
+- [x] String - Single line with escaped double quote
+- [x] String - Multi Line
+- [x] String - Concatenation
+- [x] String - Multi Line with internal double quotes
 
 ### list
 
@@ -128,19 +131,64 @@ Current status (not mentioned parts are not implemented):
 - [x] multiple clauses
 - [x] multiple clauses with guard
 
+### variable
+- [x] snake_case
+- [x] camelCase
+- [x] ends in ?
+- [x] ends in !
+
+### keyword_list:
+- [x] Keyword empty list
+- [x] Keyword list shorthand syntax
+- [x] Keyword list tuple syntax
+- [x] Keyword list error - shorthand before tuple syntax
+- [x] Keyword list mixed - tuples + shorthand
+
+### charlist
+- [x] Charlist - Single line
+- [x] Single line with escaped quote
+- [x] Charlist - Multi line
+- [x] Charlist - Multi line with internal quote
+- [x] Char - Single
+- [x] Char - list
+
+### string_interpolation
+- [x] basic
+- [x] with operator
+- [x] with text
+- [x] in mutil line strings
+- [x] interpolating strings in strings
+- [x] interpolating strings in strings with operator
+
+### operators
+- [x] Unary operators
+- [x] Operators with left associativity
+- [x] op right associativity
+
+### for_comprehension
+- [x] For - list generator
+- [x] For - bistring generator
+- [x] For - filter tuple
+- [x] For - square list
+- [ ] For - with options (into:, reduce: , unique: )
+
+
 ## TODO
 
+- tests, tests, tests
 - use, import, require and other macro/function calls in module body
-- keyword lists
-- function capture (&Enum.map)
+- function capture (&Enum.map/2)
 - map update (shorthand version %{ old | key: new})
-- pipe operator (and other operators probably)
+- pipe operator (does it need special treatment?)
 - list cons ([head | tail])
 - magic vars ( **Conts** )
 - comments & doctest (# iex> ... )
-- string interpolation
 - flow control (case, if, with)
 - default arguments & function heads without body; def a(b, c \\ [])
 - records?
 - matching
-- for / list comprehensions
+- fix difference between alias (Modulename) & others things like qualified function calls
+- optional parens (ex. function calls)
+- optional semicolon
+- anonymous function calls ( fib.(4) )
+- bugfixes, edge cases, bugfixes....
