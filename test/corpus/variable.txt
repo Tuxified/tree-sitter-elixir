@@ -1,0 +1,51 @@
+==============
+snake_case
+==============
+
+snake_case = 1
+
+---
+
+(source_file
+  (match
+    (variable)
+    (number)))
+
+==============
+camelCase
+==============
+
+camelCase = 1
+
+---
+
+(source_file
+  (match
+    (variable)
+    (number)))
+
+==============
+ends in ?
+==============
+
+snake_case? = 1
+
+---
+
+(source_file
+  (match
+    (variable)
+    (number)))
+
+==============
+ends in !
+==============
+
+snake_case! = 1
+
+---
+
+(source_file
+  (match
+    (variable)
+    (number)))
