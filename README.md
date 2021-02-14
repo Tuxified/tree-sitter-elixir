@@ -80,7 +80,7 @@ Current status (not mentioned parts are not implemented):
 - [x] Atom - Unquoted
 - [x] Atom - Operator
 - [x] Atom - Quoted
-- [] Atom - Unicode support
+- [ ] Atom - Unicode support
 
 ### sigil
 
@@ -122,12 +122,17 @@ Current status (not mentioned parts are not implemented):
 - [x] Tuple - Error
 - [x] Tuple - Trailing Separator
 
+### Anonymous Functions
+
+- [x] without args
+- [x] multiple clauses
+- [x] multiple clauses with guard
+
 ## TODO
 
 - use, import, require and other macro/function calls in module body
 - keyword lists
 - function capture (&Enum.map)
-- anonymous functions (fn -> end )
 - map update (shorthand version %{ old | key: new})
 - pipe operator (and other operators probably)
 - list cons ([head | tail])
