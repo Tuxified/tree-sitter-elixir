@@ -475,7 +475,7 @@ module.exports = grammar({
 
     do_block: ($) =>
       choice(
-        seq("do", optional($._expression), "end"),
+        seq("do", repeat($._expression), "end"),
         seq(", do:", $._expression)
       ),
     lambda: ($) => seq("fn", repeat($.lambda_clause), "end"),
