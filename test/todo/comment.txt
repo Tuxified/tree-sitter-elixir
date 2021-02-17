@@ -67,3 +67,16 @@ Comment in nested structure
       (number)
       (comment)
       (number))))
+ 
+ ====
+ Doesn't match inside string
+ ====
+ 
+ # this is a comment
+ "this is #{interpolation}"
+ 
+  -----
+  
+  (source_file
+    (comment)
+    (string (interpolation (variable)))
