@@ -96,13 +96,12 @@ const symbolOperators = choice(
   "\\\\" // "\\"
 );
 
-const OP1 = ["+", "-", "!", "not", "bnot", "^", "~~~" ];
+const OP1 = ["+", "-", "!", "not", "bnot", "^", "~~~"];
 const OP2_LEFT_ASSOC = [
   "*",
   "+",
   "-",
   "/",
-  "|",
   "!=",
   "<",
   "=<",
@@ -126,7 +125,14 @@ const OP2_LEFT_ASSOC = [
   "|>",
   "<>",
   // custom operators, can be used by libs
-  "<<~", "~>>", "<~", "~>", "<~>", "<|>", "+++", "---"
+  "<<~",
+  "~>>",
+  "<~",
+  "~>",
+  "<~>",
+  "<|>",
+  "+++",
+  "---",
 ];
 const OP2_RIGHT_ASSOC = ["=~", "++", "--", "::"];
 
@@ -189,7 +195,7 @@ const PREC = {
   EXPRESSION: 4,
   PATTERN: 3,
   MACRO_APPLICATION: 1,
-  COMMENT: -1,
+  COMMENT: -2,
   MATCH: -1, // prefer other expressions to matches
 };
 
@@ -205,6 +211,7 @@ const tuple = (x) => delim(BRACE_LEFT, optional(sepBy(COMMA, x)), BRACE_RIGHT);
 const list = (x) =>
   delim(BRACKET_LEFT, optional(sepBy(COMMA, x)), BRACKET_RIGHT);
 const parens = (x) => delim(PARENS_LEFT, x, PARENS_RIGHT);
+const optionalParens = (x) => choice(delim(PARENS_LEFT, x, PARENS_RIGHT), x);
 const args = (x) => field("arguments", parens(optional(sepBy(COMMA, x))));
 
 const oneOf = (x) => choice.apply(null, x);
@@ -219,7 +226,8 @@ module.exports = grammar({
   name: "elixir",
 
   word: ($) => $.identifier,
-  extras: ($) => [/[\x00-\x20\x80-\xA0]/, $.comment],
+  // extras: ($) => [/[\x00-\x20\x80 -\xA0]/, $.comment],
+  extras: ($) => [/\s|\n/, $.comment],
   // inline: ($) => [$._term, $._expression],
 
   rules: {
@@ -252,14 +260,14 @@ module.exports = grammar({
             /[_a-zA-Z]/,
             repeat(/[0-9a-zA-Z_@]/),
             optional(choice("?", "!")),
-            COLON
+            token.immediate(COLON)
           ),
-          seq(symbolOperators, COLON),
+          seq(symbolOperators, token.immediate(COLON)),
           seq(
             choice("'", '"'),
             repeat(/[0-9a-zA-Z_@]/),
             choice("'", '"'),
-            COLON
+            token.immediate(COLON)
           )
         )
       ),
@@ -308,15 +316,14 @@ module.exports = grammar({
     boolean: ($) =>
       choice("true", "false", ":true", ":false", ":'true'", ":'false'"),
 
-    list: ($) =>
+    list: ($) => prec(PREC.EXPR_LIST_CONS, choice($._list, $.list_cons)),
+
+    _list: ($) =>
       seq(
         BRACKET_LEFT,
         optional($._trailing_comma_separator_elements),
         BRACKET_RIGHT
       ),
-
-    _expr_list: ($) =>
-      prec(PREC.EXPR_LIST_CONS, choice(list($._expression), $.list_cons)),
 
     list_cons: ($) =>
       delim(
@@ -582,10 +589,7 @@ module.exports = grammar({
     case: ($) => seq("case", $._expression, "do", repeat($.case_clause), "end"),
     case_clause: ($) =>
       seq(
-        field(
-          "arguments",
-          optional(choice(parens(optional($.pattern)), $.pattern))
-        ),
+        field("arguments", optional(optionalParens($.pattern))),
         optional($.guard_clause),
         ARROW,
         field("body", $._expression)
@@ -603,8 +607,7 @@ module.exports = grammar({
         field("body", $._expression)
       ),
 
-    if: $ => seq("if", $._expression, $.do_block),
-    unless: $ => seq("unless", $._expression, $.do_block),
-
+    if: ($) => seq("if", $._expression, $.do_block),
+    unless: ($) => seq("unless", $._expression, $.do_block),
   },
 });
