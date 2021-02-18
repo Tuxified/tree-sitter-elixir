@@ -1065,11 +1065,19 @@
             "named": false
           },
           {
+            "type": "+++",
+            "named": false
+          },
+          {
             "type": "-",
             "named": false
           },
           {
             "type": "--",
+            "named": false
+          },
+          {
+            "type": "---",
             "named": false
           },
           {
@@ -1085,6 +1093,10 @@
             "named": false
           },
           {
+            "type": "::",
+            "named": false
+          },
+          {
             "type": "<",
             "named": false
           },
@@ -1093,7 +1105,23 @@
             "named": false
           },
           {
+            "type": "<<~",
+            "named": false
+          },
+          {
             "type": "<>",
+            "named": false
+          },
+          {
+            "type": "<|>",
+            "named": false
+          },
+          {
+            "type": "<~",
+            "named": false
+          },
+          {
+            "type": "<~>",
             "named": false
           },
           {
@@ -1174,6 +1202,18 @@
           },
           {
             "type": "|||",
+            "named": false
+          },
+          {
+            "type": "~>",
+            "named": false
+          },
+          {
+            "type": "~>>",
+            "named": false
+          },
+          {
+            "type": "~~~",
             "named": false
           }
         ]
@@ -3830,6 +3870,10 @@
     "named": false
   },
   {
+    "type": "+++",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
@@ -3843,6 +3887,10 @@
   },
   {
     "type": "--",
+    "named": false
+  },
+  {
+    "type": "---",
     "named": false
   },
   {
@@ -3902,7 +3950,23 @@
     "named": false
   },
   {
+    "type": "<<~",
+    "named": false
+  },
+  {
     "type": "<>",
+    "named": false
+  },
+  {
+    "type": "<|>",
+    "named": false
+  },
+  {
+    "type": "<~",
+    "named": false
+  },
+  {
+    "type": "<~>",
     "named": false
   },
   {
@@ -4023,6 +4087,10 @@
   },
   {
     "type": "charlist",
+    "named": true
+  },
+  {
+    "type": "comment",
     "named": true
   },
   {
@@ -4159,6 +4227,18 @@
   },
   {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "~>",
+    "named": false
+  },
+  {
+    "type": "~>>",
+    "named": false
+  },
+  {
+    "type": "~~~",
     "named": false
   }
 ]

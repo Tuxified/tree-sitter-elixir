@@ -44,4 +44,4 @@ Map error - missing comma
 
 ---
 
-(source_file (map (ERROR (number))))
+(source_file (map (ERROR (number) (number))))

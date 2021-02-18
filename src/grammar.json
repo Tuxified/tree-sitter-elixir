@@ -1,5 +1,6 @@
 {
   "name": "elixir",
+  "word": "identifier",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -18,8 +19,15 @@
       }
     },
     "comment": {
-      "type": "PATTERN",
-      "value": "#.*\\n"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": -1,
+        "content": {
+          "type": "PATTERN",
+          "value": "#.*\\n"
+        }
+      }
     },
     "number": {
       "type": "TOKEN",
@@ -2906,6 +2914,10 @@
                 {
                   "type": "STRING",
                   "value": "^"
+                },
+                {
+                  "type": "STRING",
+                  "value": "~~~"
                 }
               ]
             }
@@ -3051,6 +3063,38 @@
                     {
                       "type": "STRING",
                       "value": "<>"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "<<~"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "~>>"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "<~"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "~>"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "<~>"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "<|>"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "+++"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "---"
                     }
                   ]
                 }
@@ -3097,6 +3141,10 @@
                     {
                       "type": "STRING",
                       "value": "--"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "::"
                     }
                   ]
                 }
@@ -3505,7 +3553,11 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[\\x00-\\x20\\x80-\\xA0]"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
     }
   ],
   "conflicts": [],

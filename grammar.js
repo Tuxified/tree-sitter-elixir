@@ -96,7 +96,7 @@ const symbolOperators = choice(
   "\\\\" // "\\"
 );
 
-const OP1 = ["+", "-", "!", "not", "bnot", "^"];
+const OP1 = ["+", "-", "!", "not", "bnot", "^", "~~~" ];
 const OP2_LEFT_ASSOC = [
   "*",
   "+",
@@ -125,8 +125,10 @@ const OP2_LEFT_ASSOC = [
   "..",
   "|>",
   "<>",
+  // custom operators, can be used by libs
+  "<<~", "~>>", "<~", "~>", "<~>", "<|>", "+++", "---"
 ];
-const OP2_RIGHT_ASSOC = ["=~", "++", "--"];
+const OP2_RIGHT_ASSOC = ["=~", "++", "--", "::"];
 
 const ARROW = "->";
 const AT_OP = "@";
@@ -187,6 +189,7 @@ const PREC = {
   EXPRESSION: 4,
   PATTERN: 3,
   MACRO_APPLICATION: 1,
+  COMMENT: -1,
   MATCH: -1, // prefer other expressions to matches
 };
 
@@ -215,15 +218,14 @@ const oneOf = (x) => choice.apply(null, x);
 module.exports = grammar({
   name: "elixir",
 
-  // TODO: figure out why this wreaks havoc
-  // word: ($) => $.identifier,
-  // extras: ($) => [/[\x00-\x20\x80-\xA0]/, $.comment],
+  word: ($) => $.identifier,
+  extras: ($) => [/[\x00-\x20\x80-\xA0]/, $.comment],
   // inline: ($) => [$._term, $._expression],
 
   rules: {
     source_file: ($) => repeat(choice($.defmodule, $._expression)),
 
-    comment: ($) => /#.*\n/,
+    comment: ($) => token(prec(PREC.COMMENT, /#.*\n/)),
 
     number: ($) => token(choice(integer, float)),
 
