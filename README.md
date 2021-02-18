@@ -176,17 +176,13 @@ Current status (not mentioned parts are not implemented):
 ## TODO
 
 - tests, tests, tests
-- use, import, require and other macro/function calls in module body
+- use, import, require and other macro/function calls in module body?
 - function capture (&Enum.map/2)
-- map update (shorthand version %{ old | key: new})
 - pipe operator (does it need special treatment?)
-- list cons ([head | tail])
-- magic vars ( **Conts** )
-- comments & doctest (# iex> ... )
-- flow control (case, if, with)
+- doctest (# iex> ... ) ?
+- elaborate flow control (if+else, with)
 - default arguments & function heads without body; def a(b, c \\ [])
 - records?
-- matching
 - fix difference between alias (Modulename) & others things like qualified function calls
 - optional parens (ex. function calls)
 - optional semicolon

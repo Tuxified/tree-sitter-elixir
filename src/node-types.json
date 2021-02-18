@@ -2754,6 +2754,10 @@
         {
           "type": "map_entry",
           "named": true
+        },
+        {
+          "type": "map_update",
+          "named": true
         }
       ]
     }
@@ -2779,6 +2783,10 @@
           "named": true
         },
         {
+          "type": "case",
+          "named": true
+        },
+        {
           "type": "char",
           "named": true
         },
@@ -2787,7 +2795,35 @@
           "named": true
         },
         {
+          "type": "cond",
+          "named": true
+        },
+        {
+          "type": "def",
+          "named": true
+        },
+        {
+          "type": "expr_op",
+          "named": true
+        },
+        {
+          "type": "for_list_comprehension",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "if",
+          "named": true
+        },
+        {
           "type": "keyword_list",
+          "named": true
+        },
+        {
+          "type": "lambda",
           "named": true
         },
         {
@@ -2796,6 +2832,10 @@
         },
         {
           "type": "map",
+          "named": true
+        },
+        {
+          "type": "match",
           "named": true
         },
         {
@@ -2823,7 +2863,41 @@
           "named": true
         },
         {
+          "type": "unless",
+          "named": true
+        },
+        {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "map_update",
+    "named": true,
+    "fields": {
+      "map": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "map_entry",
           "named": true
         }
       ]

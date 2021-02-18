@@ -350,7 +350,9 @@ module.exports = grammar({
         )
       ),
 
-    map: ($) =>
+    map: ($) => choice($._map, $.map_update),
+
+    _map: ($) =>
       seq(
         PERCENT,
         BRACE_LEFT,
@@ -360,7 +362,16 @@ module.exports = grammar({
     map_entry: ($) =>
       seq(
         choice(seq($._term, FAT_ARROW), alias($._reverse_atom, $.atom)),
-        $._term
+        $._expression
+      ),
+    map_update: ($) =>
+      seq(
+        PERCENT,
+        BRACE_LEFT,
+        field("map", choice($.variable, $.function_call)),
+        PIPE,
+        sepBy(COMMA, $.map_entry),
+        BRACE_RIGHT
       ),
 
     struct: ($) =>
