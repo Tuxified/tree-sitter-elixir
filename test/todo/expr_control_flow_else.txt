@@ -1,0 +1,48 @@
+================================================================================
+Control flow - if + else
+================================================================================
+
+if predicate() do
+  "works"
+else
+  "works not"
+end
+
+if predicate, do: :works, else: :works_not
+
+--------------------------------------------------------------------------------
+
+(source_file
+  
+  (if
+    (function_call (computed_function_name (variable)))
+    (do_block (string))
+    (else_block (string)))
+  (if
+    (variable)
+    (do_block (atom))
+    (else_block (atom))))
+
+================================================================================
+Control flow - unless + else
+================================================================================
+
+unless predicate() do
+  "works"
+else
+  "works not"
+end
+
+unless predicate, do: :works, else: :works_not
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (unless
+    (function_call (computed_function_name (variable)))
+    (do_block (string))
+    (else_block (string)))
+  (unless
+    (variable)
+    (do_block (atom))
+    (else_block (atom))))

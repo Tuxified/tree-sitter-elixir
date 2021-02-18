@@ -432,7 +432,11 @@ module.exports = grammar({
         $.variable,
         $.expr_op,
         $.lambda,
-        $.for_list_comprehension
+        $.for_list_comprehension,
+        $.case,
+        $.cond,
+        $.if,
+        $.unless
         // $.alias, TODO: this breaks function calls etc
       ),
     _term: ($) =>
@@ -572,5 +576,33 @@ module.exports = grammar({
         choice($.binary_string, $.variable, $.function_call),
         BINARY_RIGHT
       ),
+
+    case: ($) => seq("case", $._expression, "do", repeat($.case_clause), "end"),
+    case_clause: ($) =>
+      seq(
+        field(
+          "arguments",
+          optional(choice(parens(optional($.pattern)), $.pattern))
+        ),
+        optional($.guard_clause),
+        ARROW,
+        field("body", $._expression)
+      ),
+
+    cond: ($) => seq("cond", "do", repeat($.cond_clause), "end"),
+    cond_clause: ($) =>
+      seq(
+        field(
+          "arguments",
+          optional(choice(parens(optional($.pattern)), $.pattern))
+        ),
+        optional($.guard_clause),
+        ARROW,
+        field("body", $._expression)
+      ),
+
+    if: $ => seq("if", $._expression, $.do_block),
+    unless: $ => seq("unless", $._expression, $.do_block),
+
   },
 });

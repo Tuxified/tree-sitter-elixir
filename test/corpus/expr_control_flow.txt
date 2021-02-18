@@ -1,0 +1,125 @@
+================================================================================
+Control flow - case
+================================================================================
+
+case something(:test) do
+  true ->
+    {:ok, works}
+  result when is_list(result) ->
+    {:ok, hd(result)}
+  _ ->
+    {:error, false}
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (case
+    (function_call
+      (computed_function_name 
+        (variable ))
+       (atom ))
+    (case_clause
+      (pattern 
+        (boolean ))
+      (tuple 
+        (atom )
+        (variable )))
+    (case_clause 
+      (pattern 
+        (variable ))
+      (guard_clause 
+        (function_call 
+          (computed_function_name 
+            (variable ))
+          (variable )))
+        (tuple 
+        (atom )
+        (function_call 
+          (computed_function_name 
+            (variable ))
+          (variable ))))
+    (case_clause 
+      (pattern 
+        (variable ))
+      (tuple 
+        (atom )
+        (boolean )))))
+
+
+================================================================================
+Control flow - cond
+================================================================================
+
+cond do
+  true ->
+    {:ok, works}
+  _ ->
+    {:error, false}
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (cond
+    (cond_clause
+      (pattern 
+        (boolean ))
+      (tuple 
+        (atom )
+        (variable )))
+    (cond_clause 
+      (pattern 
+        (variable ))
+      (tuple 
+        (atom )
+        (boolean )))))
+
+================================================================================
+Control flow - if 
+================================================================================
+
+result = if predicate, do: :works
+
+
+if predicate() do
+  "works"
+end
+
+if predicate, do: :works
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (match
+    (variable)
+    (if
+      (variable)
+      (do_block
+        (atom))))
+  (if
+    (function_call (computed_function_name (variable)))
+    (do_block (string)))
+  (if
+    (variable)
+    (do_block (atom))))
+
+================================================================================
+Control flow - unless
+================================================================================
+
+unless predicate() do
+  "works"
+end
+
+unless predicate, do: :works
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (unless
+    (function_call (computed_function_name (variable)))
+    (do_block (string)))
+  (unless
+    (variable)
+    (do_block (atom))))
