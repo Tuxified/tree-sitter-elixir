@@ -1,10 +1,5 @@
 [
   {
-    "type": "alias",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "bin_part",
     "named": true,
     "fields": {},
@@ -79,6 +74,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "alias",
+          "named": true
+        },
         {
           "type": "atom",
           "named": true
@@ -221,6 +220,10 @@
             "named": false
           },
           {
+            "type": "alias",
+            "named": true
+          },
+          {
             "type": "atom",
             "named": true
           },
@@ -347,6 +350,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "alias",
+          "named": true
+        },
         {
           "type": "atom",
           "named": true
@@ -500,6 +507,10 @@
             "named": false
           },
           {
+            "type": "alias",
+            "named": true
+          },
+          {
             "type": "atom",
             "named": true
           },
@@ -645,10 +656,6 @@
       "required": true,
       "types": [
         {
-          "type": "atom",
-          "named": true
-        },
-        {
           "type": "do_block",
           "named": true
         },
@@ -701,6 +708,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "alias",
+          "named": true
+        },
         {
           "type": "atom",
           "named": true
@@ -821,6 +832,10 @@
             "named": false
           },
           {
+            "type": "alias",
+            "named": true
+          },
+          {
             "type": "atom",
             "named": true
           },
@@ -933,6 +948,10 @@
           {
             "type": ")",
             "named": false
+          },
+          {
+            "type": "alias",
+            "named": true
           },
           {
             "type": "atom",
@@ -1227,6 +1246,10 @@
             "named": false
           },
           {
+            "type": "alias",
+            "named": true
+          },
+          {
             "type": "atom",
             "named": true
           },
@@ -1393,6 +1416,10 @@
       "required": false,
       "types": [
         {
+          "type": "alias",
+          "named": true
+        },
+        {
           "type": "atom",
           "named": true
         },
@@ -1503,6 +1530,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "alias",
+          "named": true
+        },
         {
           "type": "atom",
           "named": true
@@ -1625,6 +1656,10 @@
           {
             "type": ",",
             "named": false
+          },
+          {
+            "type": "alias",
+            "named": true
           },
           {
             "type": "atom",
@@ -1753,6 +1788,10 @@
       "required": true,
       "types": [
         {
+          "type": "alias",
+          "named": true
+        },
+        {
           "type": "atom",
           "named": true
         },
@@ -1856,6 +1895,11 @@
     }
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "if",
     "named": true,
     "fields": {},
@@ -1863,6 +1907,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "alias",
+          "named": true
+        },
         {
           "type": "atom",
           "named": true
@@ -1978,6 +2026,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "alias",
+          "named": true
+        },
         {
           "type": "atom",
           "named": true
@@ -2277,6 +2329,10 @@
             "named": false
           },
           {
+            "type": "alias",
+            "named": true
+          },
+          {
             "type": "atom",
             "named": true
           },
@@ -2398,6 +2454,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "alias",
+          "named": true
+        },
         {
           "type": "atom",
           "named": true
@@ -2526,6 +2586,10 @@
             "named": false
           },
           {
+            "type": "alias",
+            "named": true
+          },
+          {
             "type": "atom",
             "named": true
           },
@@ -2638,6 +2702,10 @@
           {
             "type": ")",
             "named": false
+          },
+          {
+            "type": "alias",
+            "named": true
           },
           {
             "type": "atom",
@@ -2770,6 +2838,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "alias",
+          "named": true
+        },
         {
           "type": "atom",
           "named": true
@@ -2912,6 +2984,10 @@
       "required": true,
       "types": [
         {
+          "type": "alias",
+          "named": true
+        },
+        {
           "type": "atom",
           "named": true
         },
@@ -3022,6 +3098,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "alias",
+          "named": true
+        },
         {
           "type": "atom",
           "named": true
@@ -3215,6 +3295,10 @@
           {
             "type": ")",
             "named": false
+          },
+          {
+            "type": "alias",
+            "named": true
           },
           {
             "type": "atom",
@@ -3447,6 +3531,10 @@
       "required": false,
       "types": [
         {
+          "type": "alias",
+          "named": true
+        },
+        {
           "type": "atom",
           "named": true
         },
@@ -3678,6 +3766,10 @@
       "required": false,
       "types": [
         {
+          "type": "alias",
+          "named": true
+        },
+        {
           "type": "atom",
           "named": true
         },
@@ -3789,6 +3881,10 @@
       "required": true,
       "types": [
         {
+          "type": "alias",
+          "named": true
+        },
+        {
           "type": "atom",
           "named": true
         },
@@ -3894,6 +3990,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "variable",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "!",
@@ -4104,6 +4205,10 @@
     "named": false
   },
   {
+    "type": "alias",
+    "named": true
+  },
+  {
     "type": "and",
     "named": false
   },
@@ -4208,10 +4313,6 @@
     "named": false
   },
   {
-    "type": "identifier",
-    "named": true
-  },
-  {
     "type": "if",
     "named": false
   },
@@ -4274,10 +4375,6 @@
   {
     "type": "utf8",
     "named": false
-  },
-  {
-    "type": "variable",
-    "named": true
   },
   {
     "type": "when",

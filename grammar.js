@@ -225,7 +225,7 @@ const oneOf = (x) => choice.apply(null, x);
 module.exports = grammar({
   name: "elixir",
 
-  word: ($) => $.identifier,
+  word: ($) => $._identifier,
   // extras: ($) => [/[\x00-\x20\x80 -\xA0]/, $.comment],
   extras: ($) => [/\s|\n/, $.comment],
   // inline: ($) => [$._term, $._expression],
@@ -271,7 +271,7 @@ module.exports = grammar({
           )
         )
       ),
-    alias: ($) => seq(/[A-Z]/, repeat(/[0-9a-zA-Z_.]/)),
+    alias: ($) => token(sepBy(DOT_OP, seq(/[A-Z]/, repeat(/[0-9a-zA-Z_]/)))),
 
     // TODO: unicode string support
     string: ($) =>
@@ -416,9 +416,11 @@ module.exports = grammar({
         BRACE_RIGHT
       ),
 
-    variable: ($) =>
+    variable: ($) => $._identifier,
+    identifier: ($) => $._identifier,
+    // /[_a-z\xC0-\xD6\xD8-\xDE\xDF-\xF6\xF8-\xFF][_a-zA-Z0-9\xC0-\xD6\xD8-\xDE]*[?!]?/,
+    _identifier: ($) =>
       /[_a-z\xC0-\xD6\xD8-\xDE\xDF-\xF6\xF8-\xFF][_a-zA-Z0-9\xC0-\xD6\xD8-\xDE]*[?!]?/,
-    identifier: ($) => /[a-z_]+/,
 
     _trailing_comma_separator_elements: ($) =>
       seq(sepBy(COMMA, $._expression), optional(COMMA)),
@@ -456,8 +458,8 @@ module.exports = grammar({
         $.case,
         $.cond,
         $.if,
-        $.unless
-        // $.alias, TODO: this breaks function calls etc
+        $.unless,
+        $.alias,
       ),
     _term: ($) =>
       choice(
@@ -491,7 +493,7 @@ module.exports = grammar({
     def: ($) =>
       seq(
         choice("def", "defp"),
-        choice($.atom, $.identifier),
+        optionalParens($.identifier),
         optional(args($.variable)),
         optional($.guard_clause),
         $.do_block

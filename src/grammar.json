@@ -1,6 +1,6 @@
 {
   "name": "elixir",
-  "word": "identifier",
+  "word": "_identifier",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -951,20 +951,56 @@
       }
     },
     "alias": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[A-Z]"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "PATTERN",
-            "value": "[0-9a-zA-Z_.]"
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[A-Z]"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[0-9a-zA-Z_]"
+                }
+              }
+            ]
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "."
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "PATTERN",
+                      "value": "[A-Z]"
+                    },
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "[0-9a-zA-Z_]"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
           }
-        }
-      ]
+        ]
+      }
     },
     "string": {
       "type": "CHOICE",
@@ -2096,12 +2132,16 @@
       ]
     },
     "variable": {
-      "type": "PATTERN",
-      "value": "[_a-z\\xC0-\\xD6\\xD8-\\xDE\\xDF-\\xF6\\xF8-\\xFF][_a-zA-Z0-9\\xC0-\\xD6\\xD8-\\xDE]*[?!]?"
+      "type": "SYMBOL",
+      "name": "_identifier"
     },
     "identifier": {
+      "type": "SYMBOL",
+      "name": "_identifier"
+    },
+    "_identifier": {
       "type": "PATTERN",
-      "value": "[a-z_]+"
+      "value": "[_a-z\\xC0-\\xD6\\xD8-\\xDE\\xDF-\\xF6\\xF8-\\xFF][_a-zA-Z0-9\\xC0-\\xD6\\xD8-\\xDE]*[?!]?"
     },
     "_trailing_comma_separator_elements": {
       "type": "SEQ",
@@ -2290,6 +2330,10 @@
         {
           "type": "SYMBOL",
           "name": "unless"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "alias"
         }
       ]
     },
@@ -2425,8 +2469,21 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "atom"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
             },
             {
               "type": "SYMBOL",
