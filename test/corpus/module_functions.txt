@@ -63,3 +63,17 @@ end
 ---
 
 (source_file (def (identifier) (variable) (variable) (guard_clause (function_call (computed_function_name (variable)) (variable))) (do_block (string))))
+
+
+============
+Module function with literal pattern
+============
+
+def hello("world"), do: "Hello world"
+def hello(name), do: "Hello #{name}"
+
+---
+
+(source_file
+  (def (identifier) (string) (do_block (string)))
+  (def (identifier) (variable) (do_block (string (interpolation (variable))))))

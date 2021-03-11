@@ -494,7 +494,7 @@ module.exports = grammar({
       seq(
         choice("def", "defp"),
         optionalParens($.identifier),
-        optional(args($.variable)),
+        optional(args($._term)),
         optional($.guard_clause),
         $.do_block
       ),

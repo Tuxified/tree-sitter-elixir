@@ -645,6 +645,62 @@
             "named": false
           },
           {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "binary_string",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "char",
+            "named": true
+          },
+          {
+            "type": "charlist",
+            "named": true
+          },
+          {
+            "type": "keyword_list",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "map",
+            "named": true
+          },
+          {
+            "type": "module_attribute",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "sigil",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
             "type": "variable",
             "named": true
           }

@@ -2512,7 +2512,7 @@
                         "members": [
                           {
                             "type": "SYMBOL",
-                            "name": "variable"
+                            "name": "_term"
                           },
                           {
                             "type": "REPEAT",
@@ -2525,7 +2525,7 @@
                                 },
                                 {
                                   "type": "SYMBOL",
-                                  "name": "variable"
+                                  "name": "_term"
                                 }
                               ]
                             }
