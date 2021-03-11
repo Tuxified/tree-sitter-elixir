@@ -418,7 +418,6 @@ module.exports = grammar({
 
     variable: ($) => $._identifier,
     identifier: ($) => $._identifier,
-    // /[_a-z\xC0-\xD6\xD8-\xDE\xDF-\xF6\xF8-\xFF][_a-zA-Z0-9\xC0-\xD6\xD8-\xDE]*[?!]?/,
     _identifier: ($) =>
       /[_a-z\xC0-\xD6\xD8-\xDE\xDF-\xF6\xF8-\xFF][_a-zA-Z0-9\xC0-\xD6\xD8-\xDE]*[?!]?/,
 
@@ -459,7 +458,7 @@ module.exports = grammar({
         $.cond,
         $.if,
         $.unless,
-        $.alias,
+        $.alias
       ),
     _term: ($) =>
       choice(
@@ -494,15 +493,17 @@ module.exports = grammar({
       seq(
         choice("def", "defp"),
         optionalParens($.identifier),
-        optional(args($._term)),
+        optional(args(choice($._term, $.optional_argument))),
         optional($.guard_clause),
         $.do_block
       ),
+    optional_argument: ($) =>
+      seq(field("name", $.variable), "\\\\", field("value", $._term)),
 
     do_block: ($) =>
       choice(
         seq("do", repeat($._expression), "end"),
-        seq(", do:", $._expression)
+        seq(", ", "do:", $._expression)
       ),
     lambda: ($) => seq("fn", repeat($.lambda_clause), "end"),
     lambda_clause: ($) =>

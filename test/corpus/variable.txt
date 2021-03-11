@@ -1,5 +1,5 @@
 ==============
-snake_case
+Variable - snake_case
 ==============
 
 snake_case = 1
@@ -12,7 +12,7 @@ snake_case = 1
     (number)))
 
 ==============
-camelCase
+Variable - camelCase
 ==============
 
 camelCase = 1
@@ -25,7 +25,7 @@ camelCase = 1
     (number)))
 
 ==============
-ends in ?
+Variable - ends in ?
 ==============
 
 snake_case? = 1
@@ -38,7 +38,7 @@ snake_case? = 1
     (number)))
 
 ==============
-ends in !
+Variable - ends in !
 ==============
 
 snake_case! = 1

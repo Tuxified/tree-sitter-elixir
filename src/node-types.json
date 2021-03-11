@@ -685,6 +685,10 @@
             "named": true
           },
           {
+            "type": "optional_argument",
+            "named": true
+          },
+          {
             "type": "sigil",
             "named": true
           },
@@ -3266,6 +3270,88 @@
     }
   },
   {
+    "type": "optional_argument",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "binary_string",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "char",
+            "named": true
+          },
+          {
+            "type": "charlist",
+            "named": true
+          },
+          {
+            "type": "keyword_list",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "map",
+            "named": true
+          },
+          {
+            "type": "module_attribute",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "sigil",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "struct",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "pattern",
     "named": true,
     "fields": {},
@@ -4109,7 +4195,7 @@
     "named": false
   },
   {
-    "type": ", do:",
+    "type": ", ",
     "named": false
   },
   {
@@ -4249,6 +4335,10 @@
     "named": false
   },
   {
+    "type": "\\\\",
+    "named": false
+  },
+  {
     "type": "]",
     "named": false
   },
@@ -4346,6 +4436,10 @@
   },
   {
     "type": "do",
+    "named": false
+  },
+  {
+    "type": "do:",
     "named": false
   },
   {

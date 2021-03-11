@@ -1,5 +1,5 @@
 ======================
-basic
+String interpolation - basic
 ======================
 "#{9999}"
 "#{var_name}"
@@ -10,9 +10,9 @@ basic
   (string (interpolation (number)))
   (string (interpolation (variable))))
 
-===
-with operator
-===
+======================
+String interpolation with operator
+======================
 
 "#{var_name + 9999}"
 
@@ -21,9 +21,9 @@ with operator
 (source_file
   (string (interpolation (expr_op (variable) (number)))))
 
-===
+======================
 with text
-===
+======================
 
 "x = #{x}, 2x = #{x * 2}"
 
@@ -34,9 +34,9 @@ with text
     (interpolation (variable))
     (interpolation (expr_op (variable) (number)))))
 
-===
-in mutil line strings
-===
+======================
+String interpolation in mutil line strings
+======================
 
 """
 This muilti line string,
@@ -51,9 +51,9 @@ Neat."""
     (interpolation (variable))
     (interpolation (expr_op (variable) (variable)))))
 
-===
-interpolating strings in strings
-===
+======================
+String interpolation - strings in strings
+======================
 
 "This string #{"contains a string"}"
 
@@ -63,9 +63,9 @@ interpolating strings in strings
   (string
     (interpolation (string))))
 
-===
-interpolating strings in strings with operator
-===
+======================
+String interpolation - strings in strings with operator
+======================
 
 "This string #{"contains" <> "operation"}"
 

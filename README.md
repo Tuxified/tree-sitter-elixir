@@ -132,12 +132,14 @@ Current status (not mentioned parts are not implemented):
 - [x] multiple clauses with guard
 
 ### variable
+
 - [x] snake_case
 - [x] camelCase
 - [x] ends in ?
 - [x] ends in !
 
 ### keyword_list:
+
 - [x] Keyword empty list
 - [x] Keyword list shorthand syntax
 - [x] Keyword list tuple syntax
@@ -145,6 +147,7 @@ Current status (not mentioned parts are not implemented):
 - [x] Keyword list mixed - tuples + shorthand
 
 ### charlist
+
 - [x] Charlist - Single line
 - [x] Single line with escaped quote
 - [x] Charlist - Multi line
@@ -153,6 +156,7 @@ Current status (not mentioned parts are not implemented):
 - [x] Char - list
 
 ### string_interpolation
+
 - [x] basic
 - [x] with operator
 - [x] with text
@@ -161,30 +165,39 @@ Current status (not mentioned parts are not implemented):
 - [x] interpolating strings in strings with operator
 
 ### operators
+
 - [x] Unary operators
 - [x] Operators with left associativity
 - [x] op right associativity
 
 ### for_comprehension
+
 - [x] For - list generator
 - [x] For - bistring generator
 - [x] For - filter tuple
 - [x] For - square list
 - [ ] For - with options (into:, reduce: , unique: )
 
+## FAQ
 
-## TODO
+### Why? Doesn't Elixir ship with a parser?
 
-- tests, tests, tests
-- use, import, require and other macro/function calls in module body?
-- function capture (&Enum.map/2)
-- pipe operator (does it need special treatment?)
-- doctest (# iex> ... ) ?
-- elaborate flow control (if+else, with)
-- default arguments & function heads without body; def a(b, c \\ [])
-- records?
-- fix difference between alias (Modulename) & others things like qualified function calls
-- optional parens (ex. function calls)
-- optional semicolon
-- anonymous function calls ( fib.(4) )
-- bugfixes, edge cases, bugfixes....
+Tree-sitter aims to be a tool to easily produce a fast, embeddable parser for
+tools like syntax highlighting in editors, more richer diff analysis in GitHub
+and code (security) analysers. As LSP is a tool meant to be used by all editors
+and for all languages, such is Tree-sitter when it comes to parsers.
+
+### What's the current status? Is it done yet?
+
+Lots of the syntax has already been done, but there's also lots to be done.
+In case you want a taste, take it for a spin on the [playground](https://tuxified.github.io/tree-sitter-elixir/)
+
+### (How) Can I contribute?
+
+- Try it out, see if you find bugs which are not part of the issues list (amd report them plz)
+- If you have time and like to code: take a look at the issues list and call dibs on one
+- If you see spelling mistakes, would like to make the playground better in any way or think you can improve this project in any other way, feel free to reach out (either via issues or in private)
+
+### I have a different question / would like to chat in private
+
+Feel free to open an issue with your question. My handle on Twitter/Elixir Forum/Slack/[Elixir Discord](https://discord.gg/elixir) is Tuxified, it's also the first part of my @gmail.com email adres.

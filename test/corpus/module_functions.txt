@@ -77,3 +77,27 @@ def hello(name), do: "Hello #{name}"
 (source_file
   (def (identifier) (string) (do_block (string)))
   (def (identifier) (variable) (do_block (string (interpolation (variable))))))
+
+============
+Module function with optional argument
+============
+
+def test(name \\ "You") do
+  "Hello #{name}"
+end
+
+---
+
+(source_file (def (identifier) (optional_argument (variable) (string)) (do_block (string (interpolation (variable))))))
+
+============
+Module function with obligatory and optional arguments
+============
+
+def test(amount, name \\ "You") do
+  "Hello #{name} times #{amount}"
+end
+
+---
+
+(source_file (def (identifier) (variable) (optional_argument (variable) (string)) (do_block (string (interpolation (variable)) (interpolation (variable))))))
