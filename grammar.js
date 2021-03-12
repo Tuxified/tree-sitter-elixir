@@ -530,7 +530,10 @@ module.exports = grammar({
     _pat_tuple: ($) => prec(PREC.PATTERN, $.tuple),
 
     function_call: ($) =>
-      seq(field("name", $._function_name), args($._expression)),
+      choice(
+        seq(field("name", $._function_name), args($._expression)),
+        $.anonymous_function_call
+      ),
     _function_name: ($) =>
       prec(
         PREC.FUNCTION_NAME,
@@ -549,6 +552,12 @@ module.exports = grammar({
       prec(
         PREC.FUNCTION_NAME,
         choice($.variable, $.atom, parens($._expression))
+      ),
+    anonymous_function_call: ($) =>
+      seq(
+        field("function_name", $.variable),
+        DOT_OP,
+        field("arguments", parens(optional(sepBy(COMMA, $._expr))))
       ),
 
     expr_op: ($) => choice($._expr_operator_unary, $._expr_operator_binary),
@@ -603,7 +612,7 @@ module.exports = grammar({
     case: ($) => seq("case", $._expression, "do", repeat($.case_clause), "end"),
     case_clause: ($) =>
       seq(
-        field("arguments", optional(optionalParens($.pattern))),
+        field("arguments", optionalParens($.pattern)),
         optional($.guard_clause),
         ARROW,
         field("body", $._expression)
@@ -612,10 +621,7 @@ module.exports = grammar({
     cond: ($) => seq("cond", "do", repeat($.cond_clause), "end"),
     cond_clause: ($) =>
       seq(
-        field(
-          "arguments",
-          optional(choice(parens(optional($.pattern)), $.pattern))
-        ),
+        field("arguments", optionalParens($.pattern)),
         optional($.guard_clause),
         ARROW,
         field("body", $._expression)

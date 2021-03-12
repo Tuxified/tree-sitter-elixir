@@ -172,3 +172,34 @@ A.Module.B.function(lambda(1, local_function(1,2,3)))
               (number)
               (number)
               (number)))))
+
+================================================================================
+Anonymous Function call without args
+================================================================================
+
+lambda.()
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_call
+    (anonymous_function_call (variable))))
+
+================================================================================
+Anonymous Function call with args
+================================================================================
+
+lambda.(1)
+lambda.(1,2,3)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_call
+    (anonymous_function_call (variable)
+      (number)))
+  (function_call
+    (anonymous_function_call (variable)
+      (number)
+      (number)
+      (number))))
