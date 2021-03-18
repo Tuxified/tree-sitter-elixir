@@ -1,0 +1,31 @@
+[package]
+name = "tree-sitter-elixir"
+description = "Rust bindings for the tree sitter elixir language parser"
+# Keep in sync with package.json
+version = "0.0.2"
+authors = [
+    "wingyplus <wingyminus@gmail.com>",
+    "Tonći Galić <tuxified@gmail.com>"
+
+]
+homepage = "https://tuxified.github.io/tree-sitter-elixir/"
+repository = "https://github.com/Tuxified/tree-sitter-elixir"
+keywords = ["elixir", "tree", "sitter", "parsing", "incremental"]
+categories = ["parser-implementations", "api-bindings", "text-editors", "parsing"]
+edition = "2018"
+license = "MIT"
+build = "bindings/rust/build.rs"
+include = [
+  "rust/*",
+  "src/*",
+  "LICENSE.md"
+]
+
+[lib]
+path = "bindings/rust/lib.rs"
+
+[dependencies]
+tree-sitter = "0.17"
+
+[build-dependencies]
+cc = "1.0"
