@@ -229,9 +229,19 @@ module.exports = grammar({
   // extras: ($) => [/[\x00-\x20\x80 -\xA0]/, $.comment],
   extras: ($) => [/\s|\n/, $.comment],
   // inline: ($) => [$._term, $._expression],
+  externals: ($) => [
+    $._newline,
+  ],
 
   rules: {
-    source_file: ($) => repeat(choice($.defmodule, $._expression)),
+    source_file: ($) => repeat(seq(
+      choice($.defmodule, $._expression),
+      optional(repeat(seq(
+        $._semicolon,
+        choice($.defmodule, $._expression)
+      ))),
+      optional($._semicolon),
+      $._newline)),
 
     comment: ($) => token(prec(PREC.COMMENT, /#.*\n/)),
 
@@ -426,10 +436,13 @@ module.exports = grammar({
 
     // TOOO: elaborate to actual expression rule, stub
     _expression: ($) =>
-      choice(
-        prec(PREC.PARENTHESIZED_EXPRESSION, parens($._expr)),
-        prec(PREC.EXPRESSION, $._expr)
-      ),
+      // prec.right(seq(
+        choice(
+          prec(PREC.PARENTHESIZED_EXPRESSION, parens($._expr)),
+          prec(PREC.EXPRESSION, $._expr)
+        ),
+        // optional($._semicolon)
+      // )),
     _expr: ($) =>
       choice(
         $.number,
@@ -629,5 +642,7 @@ module.exports = grammar({
 
     if: ($) => seq("if", $._expression, $.do_block),
     unless: ($) => seq("unless", $._expression, $.do_block),
+
+    _semicolon: ($) => SEMI,
   },
 });

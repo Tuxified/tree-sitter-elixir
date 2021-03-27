@@ -1,0 +1,39 @@
+===============
+Integers With Semicolon
+===============
+
+1 ; 1
+
+---
+
+(source_file (number) (number))
+
+===============
+Assignment With Semicolon
+===============
+
+a = 1 ; b = 2
+
+---
+
+(source_file (match (variable) (number)) (match (variable) (number)))
+
+===============
+Ending With Semicolon
+===============
+
+a = 1 ;
+
+---
+
+(source_file (match (variable) (number)))
+
+===============
+Ending With Semicolon And Comments
+===============
+
+a = 1 ; # Comments
+
+---
+
+(source_file (match (variable) (number)) (comment))

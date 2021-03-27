@@ -2,18 +2,19 @@
   "name": "tree-sitter-elixir",
   "version": "0.0.2",
   "description": "Tree Sitter for Elixir.",
-  "main": "index.js",
+  "main": "bindings/node",
   "author": "Thanabodee Charoenpiriyakij <wingyminus@gmail.com>",
   "contributors": [
     "Tonći Galić <tuxified@gmail.com>"
   ],
   "license": "MIT",
   "dependencies": {
-    "nan": "^2.14.2"
+    "nan": "^2.14.2",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.18.1",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "tree-sitter-cli": "^0.19.4"
   },
   "scripts": {
     "test": "yarn run generate && tree-sitter test",
