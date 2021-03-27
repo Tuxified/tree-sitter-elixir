@@ -252,14 +252,15 @@ module.exports = grammar({
         choice(
           seq(
             ":",
-            /[_a-zA-Z]/u,
-            repeat(/[0-9a-zA-Z_@]/u),
+            /[\p{L}_]/u,
+            repeat(/[\p{L}_0-9@]/u),
             optional(choice("?", "!"))
           ),
-          seq(":", symbolOperators),
+          seq(COLON, symbolOperators),
           // TODO: unicode support, once possible ->
           // /[@_0-9\p{Letter}\P{Letter}]/u \p{L} matches any Letter in unicode category, requireqs /u flag
-          seq(":", choice("'", '"'), repeat(/[0-9a-zA-Z_@]/), choice("'", '"'))
+          seq(COLON, '"', repeat(/[^"]/), '"'),
+          seq(COLON, "'", repeat(/[^']/), "'")
         )
       ),
     // used in maps and keyword lists
@@ -267,21 +268,21 @@ module.exports = grammar({
       token(
         choice(
           seq(
-            /[_a-zA-Z]/,
-            repeat(/[0-9a-zA-Z_@]/),
+            /[\p{Ll}_]/u,
+            repeat(/[0-9\p{L}_@]/u),
             optional(choice("?", "!")),
             token.immediate(COLON)
           ),
           seq(symbolOperators, token.immediate(COLON)),
           seq(
             choice("'", '"'),
-            repeat(/[0-9a-zA-Z_@]/),
+            repeat(/[0-9\p{L}_@]/u),
             choice("'", '"'),
             token.immediate(COLON)
           )
         )
       ),
-    alias: ($) => token(sepBy(DOT_OP, seq(/[A-Z]/, repeat(/[0-9a-zA-Z_]/)))),
+    alias: ($) => token(sepBy(DOT_OP, seq(/[\p{Lu}]/u, repeat(/[0-9\p{L}_]/u)))),
 
     // TODO: unicode string support
     string: ($) =>
@@ -428,8 +429,7 @@ module.exports = grammar({
 
     variable: ($) => $._identifier,
     identifier: ($) => $._identifier,
-    _identifier: ($) =>
-      /[_a-z\xC0-\xD6\xD8-\xDE\xDF-\xF6\xF8-\xFF][_a-zA-Z0-9\xC0-\xD6\xD8-\xDE]*[?!]?/,
+    _identifier: ($) => /[\p{Ll}_][\p{L}_0-9]*[?!]?/u,
 
     _trailing_comma_separator_elements: ($) =>
       seq(sepBy(COMMA, $._expression), optional(COMMA)),

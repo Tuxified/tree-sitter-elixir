@@ -46,3 +46,13 @@ Atom - Quoted
 ---
 
 (source_file (atom) (atom))
+
+==============
+Atom - Unicode
+==============
+
+{:runtime, :time_μs, :"£", "£", '£', :こんにちは, :Ólá, :olá, :Olá}
+
+---
+
+(source_file (tuple (atom) (atom) (atom) (string) (charlist) (atom) (atom) (atom) (atom)))

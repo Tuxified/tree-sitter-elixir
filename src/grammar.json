@@ -439,13 +439,13 @@
               },
               {
                 "type": "PATTERN",
-                "value": "[_a-zA-Z]"
+                "value": "[\\p{L}_]"
               },
               {
                 "type": "REPEAT",
                 "content": {
                   "type": "PATTERN",
-                  "value": "[0-9a-zA-Z_@]"
+                  "value": "[\\p{L}_0-9@]"
                 }
               },
               {
@@ -673,37 +673,43 @@
                 "value": ":"
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "'"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "\""
-                  }
-                ]
+                "type": "STRING",
+                "value": "\""
               },
               {
                 "type": "REPEAT",
                 "content": {
                   "type": "PATTERN",
-                  "value": "[0-9a-zA-Z_@]"
+                  "value": "[^\"]"
                 }
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "'"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "\""
-                  }
-                ]
+                "type": "STRING",
+                "value": "\""
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ":"
+              },
+              {
+                "type": "STRING",
+                "value": "'"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[^']"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": "'"
               }
             ]
           }
@@ -720,13 +726,13 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[_a-zA-Z]"
+                "value": "[\\p{Ll}_]"
               },
               {
                 "type": "REPEAT",
                 "content": {
                   "type": "PATTERN",
-                  "value": "[0-9a-zA-Z_@]"
+                  "value": "[0-9\\p{L}_@]"
                 }
               },
               {
@@ -976,7 +982,7 @@
                 "type": "REPEAT",
                 "content": {
                   "type": "PATTERN",
-                  "value": "[0-9a-zA-Z_@]"
+                  "value": "[0-9\\p{L}_@]"
                 }
               },
               {
@@ -1014,13 +1020,13 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[A-Z]"
+                "value": "[\\p{Lu}]"
               },
               {
                 "type": "REPEAT",
                 "content": {
                   "type": "PATTERN",
-                  "value": "[0-9a-zA-Z_]"
+                  "value": "[0-9\\p{L}_]"
                 }
               }
             ]
@@ -1039,13 +1045,13 @@
                   "members": [
                     {
                       "type": "PATTERN",
-                      "value": "[A-Z]"
+                      "value": "[\\p{Lu}]"
                     },
                     {
                       "type": "REPEAT",
                       "content": {
                         "type": "PATTERN",
-                        "value": "[0-9a-zA-Z_]"
+                        "value": "[0-9\\p{L}_]"
                       }
                     }
                   ]
@@ -2195,7 +2201,7 @@
     },
     "_identifier": {
       "type": "PATTERN",
-      "value": "[_a-z\\xC0-\\xD6\\xD8-\\xDE\\xDF-\\xF6\\xF8-\\xFF][_a-zA-Z0-9\\xC0-\\xD6\\xD8-\\xDE]*[?!]?"
+      "value": "[\\p{Ll}_][\\p{L}_0-9]*[?!]?"
     },
     "_trailing_comma_separator_elements": {
       "type": "SEQ",
